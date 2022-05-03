@@ -2,11 +2,7 @@
   <v-app>
     <v-app-bar app elevation="0" color="transparent" dark>
       <v-spacer></v-spacer>
-      <v-btn
-        href="https://github.com/vuetifyjs/vuetify/releases/latest"
-        target="_blank"
-        text
-      >
+      <v-btn @click="goToProjects" target="_blank" text>
         <span class="mr-2 black--text">My Demo Projects</span>
         <v-icon color="black">mdi-open-in-new</v-icon>
       </v-btn>
@@ -26,5 +22,10 @@ export default {
   data: () => ({
     //
   }),
+  methods: {
+    goToProjects() {
+      this.$router.push({ name: "Projects" });
+    },
+  },
 };
 </script>
