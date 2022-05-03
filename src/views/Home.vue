@@ -1,10 +1,10 @@
 <template>
   <div>
-    <v-row no-gutters align="center">
+    <div class="d-flex flex-column flex-md-row align-center">
       <v-avatar size="100">
         <img src="@/assets/profile_photo.jpg" alt="Carlos Castro" />
       </v-avatar>
-      <div class="d-flex flex-column ml-5">
+      <div class="d-flex flex-column align-center align-md-start ml-5">
         <div class="display-1 font-weight-black no-line-height">
           Carlos Castro
         </div>
@@ -13,22 +13,24 @@
         </div>
       </div>
       <v-spacer />
-      <v-btn
-        class="mr-2"
-        outlined
-        color="grey"
-        download
-        href="@/assets/Cafeto CV Carlos Castro - English.pdf"
-        >Download CV</v-btn
-      >
-      <v-btn color="blue" class="white--text"
-        ><v-icon left>mdi-plus</v-icon>Follow</v-btn
-      >
-    </v-row>
+      <div class="d-flex mt-3 mt-md-0">
+        <v-btn
+          class="mr-2"
+          outlined
+          color="grey"
+          download
+          href="@/assets/Cafeto CV Carlos Castro - English.pdf"
+          >Download CV</v-btn
+        >
+        <v-btn color="blue" class="white--text"
+          ><v-icon left>mdi-plus</v-icon>Follow</v-btn
+        >
+      </div>
+    </div>
     <v-divider class="my-4"></v-divider>
-    <v-row>
-      <v-col cols="3" class="font-weight-bold"> About me </v-col>
-      <v-col cols="9" class="font-weight-light">
+    <div class="d-flex flex-column flex-md-row">
+      <v-col cols="12" md="3" class="font-weight-bold"> About me </v-col>
+      <v-col cols="12" md="9" class="font-weight-light">
         <p>
           I’m a Software Engineer based in Mexico City, I specialize in front
           end development and have more than five years of experience on it.
@@ -42,7 +44,7 @@
           no-gutters
           class="pa-3 blue lighten-4 rounded blue--text text--darken-2"
         >
-          <v-col cols="3">
+          <v-col cols="12" md="3">
             <div class="caption">Location</div>
             <div>
               <v-row no-gutters align="center">
@@ -53,7 +55,7 @@
               </v-row>
             </div>
           </v-col>
-          <v-col cols="3">
+          <v-col cols="12" md="3" class="mt-3 mt-md-0">
             <div class="caption">LinkedIn</div>
             <a
               href="https://www.linkedin.com/in/carlos-castro-lara/"
@@ -64,7 +66,7 @@
               ></a
             >
           </v-col>
-          <v-col cols="6">
+          <v-col cols="12" md="6" class="mt-3 mt-md-0">
             <div class="caption">Email</div>
             <a @click="copyToClipboard('carlos.castro.lara@outlook.com')"
               >carlos.castro.lara@outlook.com<v-icon
@@ -77,14 +79,15 @@
           </v-col>
         </v-row>
       </v-col>
-    </v-row>
+    </div>
     <v-divider class="my-4"></v-divider>
-    <v-row>
-      <v-col cols="3" class="font-weight-bold"> Experience </v-col>
-      <v-col cols="9" class="font-weight-light">
+    <div class="d-flex flex-column flex-md-row">
+      <v-col cols="12" md="3" class="font-weight-bold"> Experience </v-col>
+      <v-col cols="12" md="9" class="font-weight-light">
         <v-row dense>
           <v-col
-            cols="6"
+            cols="12"
+            md="6"
             class="experience-module mb-2"
             v-for="exp in experience"
             :key="exp.name"
@@ -103,7 +106,7 @@
                     <div class="caption">{{ exp.company }}</div>
                   </div>
                 </div>
-                <div class="mt-2 pl-3 d-flex flex-row">
+                <div class="mt-2 pl-3 d-flex flex-row overflow-hidden">
                   <v-tooltip top v-for="item in exp.stack" :key="item">
                     <template v-slot:activator="{ on }">
                       <div v-on="on">
@@ -122,7 +125,7 @@
           </v-col>
         </v-row>
       </v-col>
-    </v-row>
+    </div>
   </div>
 </template>
 
