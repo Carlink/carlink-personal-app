@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-btn text color="primary" @click="$router.back()"
+    <v-btn text color="primary" @click="$router.push({ name: 'Home' })"
       ><v-icon>mdi-chevron-left</v-icon>Return</v-btn
     >
     <v-list three-line>

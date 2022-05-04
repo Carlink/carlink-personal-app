@@ -57,9 +57,9 @@
         </div>
         <v-spacer></v-spacer>
 
-        <v-btn icon>
+        <!-- <v-btn icon>
           <v-icon>mdi-heart</v-icon>
-        </v-btn>
+        </v-btn> -->
       </v-card-actions>
     </v-card>
   </v-hover>
@@ -100,7 +100,6 @@ export default {
       "pokemon/getPokemonByName",
       this.pokemon.name
     );
-    console.log("this.completePokemon", this.completePokemon);
   },
 };
 </script>
