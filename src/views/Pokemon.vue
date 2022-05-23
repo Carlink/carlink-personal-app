@@ -40,6 +40,11 @@ export default {
     };
   },
   async mounted() {
+    this.$store.commit("setTheme", {
+      backgroundColor: "white",
+      buttonsColor: "primary",
+      topBarColor: "white",
+    });
     if (this.$route.query.page) {
       this.page = Number(this.$route.query.page);
     }

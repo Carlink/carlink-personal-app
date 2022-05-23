@@ -11,6 +11,8 @@
   "dependencies": {
     "core-js": "^3.6.5",
     "devicon": "^2.15.1",
+    "hooper": "^0.3.4",
+    "lockr": "0.8.5",
     "pokeapi-js-wrapper": "^1.2.2",
     "vue": "^2.6.11",
     "vue-router": "^3.2.0",

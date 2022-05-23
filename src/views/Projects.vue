@@ -51,6 +51,12 @@ export default {
           routeName: "Pokemon",
           icon: require("@/assets/pokeball.svg"),
         },
+        {
+          name: "Movie Store",
+          description: "Movie Store making use of TheMovieDB API",
+          routeName: "Movies",
+          icon: require("@/assets/MovieCatalog/moviesicon.jpeg"),
+        },
       ],
     };
   },
@@ -58,6 +64,13 @@ export default {
     goToProject(project) {
       this.$router.push({ name: project });
     },
+  },
+  mounted() {
+    this.$store.commit("setTheme", {
+      backgroundColor: "white",
+      buttonsColor: "primary",
+      topBarColor: "white",
+    });
   },
 };
 </script>

@@ -154,7 +154,13 @@ export default {
       this.$notify.toast(`${text} copied to clipboard`, options);
     },
   },
-  mounted() {},
+  mounted() {
+    this.$store.commit("setTheme", {
+      backgroundColor: "white",
+      buttonsColor: "primary",
+      topBarColor: "white",
+    });
+  },
 };
 </script>
 
