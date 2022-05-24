@@ -5,9 +5,12 @@
     >
       <v-img height="500" :src="image"></v-img>
 
-      <v-card-title style="display: block" class="text-truncate">{{
-        movie.title
-      }}</v-card-title>
+      <v-card-title
+        style="display: block"
+        class="text-truncate"
+        id="movie-title"
+        >{{ movie.title }}</v-card-title
+      >
 
       <v-card-text>
         <v-row align="center" class="mx-0">
@@ -27,7 +30,7 @@
 
         <div class="my-4 text-subtitle-1">$ {{ generatePrice() }}.00 USD</div>
 
-        <div class="three-lines">
+        <div class="three-lines" id="movie-overview">
           {{ movie.overview }}
         </div>
       </v-card-text>

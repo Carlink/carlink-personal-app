@@ -1,16 +1,59 @@
-// import { shallowMount } from "@vue/test-utils";
-import Landing from "@/views/MovieCatalog/Landing/index.vue";
+import MovieItem from "@/components/MovieCatalog/MovieItem.vue";
+import Vue from "vue";
+import Vuetify from "vuetify";
+Vue.config.productionTip = false;
+Vue.use(Vuetify);
+import { createLocalVue, mount } from "@vue/test-utils";
 
-describe("Landing", () => {
-  test("If lanfing page loaded, must show categories", () => {
-    expect(true).toBe(true);
+const MOCK_MOVIE = {
+  adult: false,
+  backdrop_path: "/gG9fTyDL03fiKnOpf2tr01sncnt.jpg",
+  genre_ids: [28, 878, 14],
+  id: 526896,
+  original_language: "en",
+  original_title: "Morbius",
+  overview:
+    "Dangerously ill with a rare blood disorder, and determined to save others suffering his same fate, Dr. Michael Morbius attempts a desperate gamble. What at first appears to be a radical success soon reveals itself to be a remedy potentially worse than the disease.",
+  popularity: 12854.042,
+  poster_path: "/6JjfSchsU6daXk2AKX8EEBjO3Fm.jpg",
+  release_date: "2022-03-30",
+  title: "Morbius",
+  video: false,
+  vote_average: 6.4,
+  vote_count: 1091,
+};
+
+describe("Movie Component", () => {
+  const localVue = createLocalVue();
+  let vuetify;
+
+  beforeEach(() => {
+    vuetify = new Vuetify();
   });
 
-  test("If landing page loaded, must show popular movies", () => {
-    expect(true).toBe(true);
+  /**
+   * Verify Valid Title
+   */
+  it("If Movie Item component load correctly, it must have a valid #movie-title", () => {
+    const wrapper = mount(MovieItem, {
+      localVue,
+      vuetify,
+      propsData: { movie: MOCK_MOVIE },
+    });
+    const title = wrapper.find("#movie-title");
+    expect(title.html()).toContain(MOCK_MOVIE.title);
   });
 
-  test("If landing page loaded, must show top rated movies", () => {
-    expect(true).toBe(true);
+  /**
+   * Verify Valid Overview
+   */
+  it("If Movie Item component load correctly, it must have a valid #movie-overview", () => {
+    const wrapper = mount(MovieItem, {
+      localVue,
+      vuetify,
+      propsData: { movie: MOCK_MOVIE },
+    });
+    const title = wrapper.find("#movie-overview");
+    expect(title.html()).toContain(MOCK_MOVIE.overview);
   });
 });
