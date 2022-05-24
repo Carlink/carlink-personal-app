@@ -23,7 +23,7 @@ const MOCK_MOVIE = {
   vote_count: 1091,
 };
 
-describe("Movie Component", () => {
+describe("Movie Catalog - Movie Component", () => {
   const localVue = createLocalVue();
   let vuetify;
 
@@ -32,7 +32,49 @@ describe("Movie Component", () => {
   });
 
   /**
-   * Verify Valid Title
+   * This test verifies that the received movie data is an object
+   */
+  it("Movie is of 'object' type", () => {
+    const wrapper = mount(MovieItem, {
+      localVue,
+      vuetify,
+      propsData: { movie: MOCK_MOVIE },
+    });
+    expect(typeof wrapper.vm.movie).toBe("object");
+  });
+
+  /**
+   * This test verifies that the received object have the complete Movie Schema properties
+   */
+  it("Movie object has a valid schema", () => {
+    const expectedKeys = [
+      "adult",
+      "backdrop_path",
+      "genre_ids",
+      "id",
+      "original_language",
+      "original_title",
+      "overview",
+      "popularity",
+      "poster_path",
+      "release_date",
+      "title",
+      "video",
+      "vote_average",
+      "vote_count",
+    ];
+    const wrapper = mount(MovieItem, {
+      localVue,
+      vuetify,
+      propsData: { movie: MOCK_MOVIE },
+    });
+    expect(Object.keys(wrapper.vm.movie)).toEqual(
+      expect.arrayContaining(expectedKeys)
+    );
+  });
+
+  /**
+   * This test verifies that the movie title is rendered in the DOM and has the right data
    */
   it("If Movie Item component load correctly, it must have a valid #movie-title", () => {
     const wrapper = mount(MovieItem, {
@@ -45,7 +87,7 @@ describe("Movie Component", () => {
   });
 
   /**
-   * Verify Valid Overview
+   * This test verifies that the movie overview is rendered in the DOM and has the right data
    */
   it("If Movie Item component load correctly, it must have a valid #movie-overview", () => {
     const wrapper = mount(MovieItem, {
