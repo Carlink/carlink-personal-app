@@ -10,6 +10,7 @@ services:
   web:
     build: .
     image: carliink-web:local
+    pull_policy: build         # rebuild on every deploy (Arcane GitOps runs compose up)
     restart: unless-stopped
     read_only: true            # static site: nothing needs to write to disk
     tmpfs:
