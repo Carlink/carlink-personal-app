@@ -1,0 +1,33 @@
+# carliink.com: deployed on the homelab (OrbStack), managed by Arcane, and
+# published to the internet only through the Cloudflare Tunnel stack.
+#
+#   local preview: https://web.carliink-web.orb.local
+#   docker compose up -d --build     rebuild after changing the app
+
+name: carliink-web
+
+services:
+  web:
+    build: .
+    image: carliink-web:local
+    restart: unless-stopped
+    read_only: true            # static site: nothing needs to write to disk
+    tmpfs:
+      - /tmp                   # nginx temp files and pid
+    cap_drop: [ALL]
+    security_opt:
+      - no-new-privileges:true
+    networks:
+      default: {}
+      edge:
+        aliases: [carliink-web]   # the tunnel sends traffic to carliink-web:8080
+    deploy:
+      resources:
+        limits:
+          memory: 64m
+    # No published ports: the internet reaches it only via the tunnel.
+
+networks:
+  edge:
+    name: edge
+    external: true   # created by the tunnel stack (~/homelab/tunnel)
