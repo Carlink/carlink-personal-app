@@ -12,6 +12,7 @@ RUN npm run build
 
 # Unprivileged nginx: runs as a non-root user on port 8080.
 FROM nginxinc/nginx-unprivileged:1.30.5-alpine
+LABEL org.opencontainers.image.source="https://github.com/Carlink/carlink-personal-app"
 COPY deploy/nginx.conf /etc/nginx/conf.d/default.conf
 COPY --from=build /app/dist /usr/share/nginx/html
 EXPOSE 8080
